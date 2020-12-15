@@ -16,5 +16,12 @@ firebase.initializeApp(firebaseConfig);
 export var auth = firebase.auth();
 export var firestore = firebase.firestore();
 export var serverTimestamp = () => firebase.firestore.FieldValue.serverTimestamp();
+export var googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+//If there is only one account the user is signed into
+//via a Google Service no "Account Picker" shows up
+//to overcome this issue we can use this method
+googleAuthProvider.setCustomParameters({
+  prompt: "select_account",
+});
 
 export default firebase;
