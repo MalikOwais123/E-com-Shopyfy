@@ -124,5 +124,20 @@ In this situation we have call that another function with `dispatch(yourAction()
  >`We will make it centrallized state manager who is responsible to amange our state depends upon user esixtance`
  >`Previuosly Every action has access to manage state but now we have the listener to do this job`
 # -------------------------------------------------------------------------------------
+ >`Previuosly Every action has access to manage state but now we have the listener to do this job`
+# -------------------------------------------------------------------------------------
+
+
+
+
+# -------------------------------------------------------------------------------------
+
+`Upload files to firebase`
+> first we have to save download link of our files to the firestore
+> so that brwoser can download those file for us when we need
+ 
+# -------------------------------------------------------------------------------------
+
+
 
 

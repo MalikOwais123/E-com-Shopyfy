@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
 import "firebase/firestore";
 
 var firebaseConfig = {
@@ -23,5 +24,8 @@ export var googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 googleAuthProvider.setCustomParameters({
   prompt: "select_account",
 });
+// create reference of storage
+export var storage = firebase.storage().ref();
+
 
 export default firebase;
