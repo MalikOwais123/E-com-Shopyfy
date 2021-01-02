@@ -15,12 +15,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-item-container">
           <div className="navbar-item">
-            <Link to="catogeries">
+            <Link to="/catogeries">
               <h3>Catogeries</h3>
             </Link>
           </div>
           <div className="navbar-item">
-            <Link to="authentication">
+            <Link to="/authentication">
               <h3>Auth</h3>
             </Link>
           </div>

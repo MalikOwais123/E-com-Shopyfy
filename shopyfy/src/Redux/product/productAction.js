@@ -1,7 +1,7 @@
 import { storage, serverTimestamp, firestore } from "./../../Firebase/Firebase";
 import { v4 as uuid } from "uuid";
-import { SET_PRODUCTS } from "./productConstant";
-import { arrangeProducts } from "../../Utility/products";
+import { CLEAR_PRODUCTS, SET_PRODUCTS } from "./productConstant";
+// import { arrangeProducts } from "../../Utility/products";
 export var uploadProduct = (productObj) => async () => {
   try {
     // 1-> send file to storage and get download url
@@ -48,8 +48,6 @@ export var uploadProduct = (productObj) => async () => {
 
 // Functiond for making products as category wise
 
-
-
 // Action for product fetching
 
 export var fetchProducts = () => async (dispatch) => {
@@ -62,11 +60,45 @@ export var fetchProducts = () => async (dispatch) => {
     // var categories = arrangeProducts(products);
     // console.log(categories);
     dispatch({
-      type:SET_PRODUCTS,
-      payload  :{
-        products //array
-      }
-    })
+      type: SET_PRODUCTS,
+      payload: {
+        products, //array
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Action which will fetch the products related to given category
+export var fetchCategoryProducts = (category) => async (dispatch) => {
+  try {
+    var query = await firestore
+      .collection("products")
+      .where("category", "==", category)
+      .get();
+    var products = [];
+    query.docs.forEach((doc) => {
+      products.push(doc.data());
+    });
+    dispatch({
+      type: SET_PRODUCTS,
+      payload: {
+        products, //array
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Clear All products
+
+export var clearProducts = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: CLEAR_PRODUCTS,
+    });
   } catch (error) {
     console.log(error);
   }

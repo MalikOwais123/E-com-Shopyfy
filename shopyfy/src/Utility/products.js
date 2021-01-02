@@ -16,7 +16,6 @@ export var arrangeProducts = (productsArr) => {
       categories = categories.map((categoryObj) => {
         if (categoryObj.category === categoryName) {
           categoryObj.products.push(product);
-          console.log("Already Exist!!");
           return categoryObj;
         } else {
           return categoryObj;
