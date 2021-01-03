@@ -26,7 +26,7 @@ const CatogeryProduct = ({
     <div>
       <h1>{category} Products Page</h1>
       {products.map((product) => (
-        <ProductCart key={product.title} {...product} />
+        <ProductCart key={product.id} {...product} />
       ))}
     </div>
   );

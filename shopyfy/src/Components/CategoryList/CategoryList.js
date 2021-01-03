@@ -10,6 +10,7 @@ const CategoryList = ({ fetchProducts, categories }) => {
     // CDM
     fetchProducts();
   }, []);
+  // console.log(categories);
   return (
     <div>
       <h1>Category List Container</h1>

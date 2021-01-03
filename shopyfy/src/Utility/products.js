@@ -32,3 +32,74 @@ export var arrangeProducts = (productsArr) => {
   }
   return categories;
 };
+
+// _____________________________________________________________________________________________________________
+
+// Algo for cart adding action when two or more are same
+export var productAdditionInCart = (cartExistingProducts, newProduct) => {
+  var isExists = cartExistingProducts.some(
+    (cartExistingProduct) => cartExistingProduct.id === newProduct.id
+  );
+  if (!isExists) {
+    return [...cartExistingProducts, { ...newProduct, quantity: 1 }];
+  } else {
+    return cartExistingProducts.map((cartExistingProduct) => {
+      if (cartExistingProduct.id === newProduct.id) {
+        return {
+          ...cartExistingProduct,
+          quantity: cartExistingProduct.quantity + 1,
+        };
+      } else {
+        return cartExistingProduct;
+      }
+    });
+  }
+};
+
+//  _____________________________________________________________________________________________________________
+export var productRemovalFromCart = (cartExistingProducts, newProductId) => {
+  // step1(find product from cart)
+  var product = cartExistingProducts.find(
+    (cartExistingProduct) => cartExistingProduct.id === newProductId
+  );
+  // step2 (check weather a product have quantity 0 or not)
+  // If > 0 then simply decrement quantity for that product
+  if (product) {
+    if (product.quantity > 0) {
+      return cartExistingProducts.map((cartExistingProduct) => {
+        if (cartExistingProduct.id === newProductId) {
+          return {
+            ...cartExistingProduct,
+            quantity: cartExistingProduct.quantity - 1,
+          };
+        } else {
+          return cartExistingProduct;
+        }
+      });
+    } else {
+      return cartExistingProducts.filter(
+        (cartExistingProduct) => cartExistingProduct.id !== newProductId
+      );
+    }
+  } else {
+    return cartExistingProducts;
+  }
+};
+
+// _____________________________________________________________________________________________________________
+
+// Delete product from cart
+export var deleteProductFromCart = (cartExistingProducts, newProductId) => {
+  // step1(find product from cart)
+  var product = cartExistingProducts.find(
+    (cartExistingProduct) => cartExistingProduct.id === newProductId
+  );
+  // Now we have to delete this product!
+  if (product) {
+    return cartExistingProducts.filter(
+      (cartExistingProduct) => cartExistingProduct.id !== newProductId
+    );
+  } else {
+    return cartExistingProducts;
+  }
+};

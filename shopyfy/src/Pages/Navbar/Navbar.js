@@ -24,6 +24,11 @@ const Navbar = () => {
               <h3>Auth</h3>
             </Link>
           </div>
+          <div className="navbar-item">
+            <Link to="/test">
+              <h3>Test Cart</h3>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
